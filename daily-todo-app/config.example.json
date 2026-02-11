@@ -1,0 +1,13 @@
+{
+  "theme": "auto",
+  "default_energy": "medium",
+  "focus_duration": 25,
+  "short_break": 5,
+  "long_break": 15,
+  "sessions_before_long_break": 4,
+  "weather_location": "auto",
+  "show_recommendations": true,
+  "auto_suggest_tasks": true,
+  "notifications_enabled": false,
+  "daily_goal": 5
+}
