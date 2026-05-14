@@ -1,33 +1,31 @@
-# 🎵 Sound Visualizer Pro
+# ✅ Daily Todo App
 
-A Python-powered real-time audio visualizer that transforms sound into stunning visual displays. Whether you're playing music, speaking into a mic, or analyzing an audio file — watch the waveform come to life.
+A clean, Python-powered daily task manager to help you organize, track, and complete your to-do list. Built with simplicity in mind — get things done without the clutter.
 
 ## ✨ Features
 
-- **Real-Time Visualization**: Live waveform and frequency spectrum display as audio plays
-- **Multiple Modes**: Switch between waveform, bar spectrum, and circular visualizations
-- **Microphone Input**: Visualize your voice or environment in real time
-- **File Playback**: Load and visualize `.mp3`, `.wav`, and other audio files
-- **Customizable**: Adjust colors, sensitivity, and visualization style
+- **Create Tasks**: Add tasks with titles, optional descriptions, and due dates
+- **Mark Complete**: Check off tasks as you finish them
+- **Daily View**: See what's on your plate for today at a glance
+- **Persistent Storage**: Your tasks are saved between sessions
+- **Simple Interface**: Lightweight CLI or web UI — no overhead
 
 ## 🛠️ Tech Stack
 
 - Python 3.10+
-- PyAudio (audio capture)
-- NumPy + SciPy (FFT / signal processing)
-- Pygame / Matplotlib / Tkinter (rendering)
+- SQLite (local task storage)
+- (Optional) Flask / FastAPI for a web interface
 
 ## 📁 Project Structure
 
 ```
-soundvisualizer/
-├── sound-visualizer-pro/   # Main application
-│   ├── main.py             # Entry point
-│   ├── visualizer.py       # Rendering engine
-│   ├── audio.py            # Audio capture and processing
-│   ├── config.py           # Settings and constants
-│   └── requirements.txt
-└── sound-visualizer.zip    # Packaged release
+todoapp/
+└── daily-todo-app/
+    ├── main.py           # App entry point
+    ├── models.py         # Task data models
+    ├── storage.py        # SQLite persistence layer
+    ├── cli.py            # Command-line interface
+    └── requirements.txt
 ```
 
 ## 🚀 Getting Started
@@ -35,16 +33,12 @@ soundvisualizer/
 ### Prerequisites
 
 - Python 3.10+
-- A working microphone (for live mode) or audio files
-
-> **Note on PyAudio**: If you have trouble installing PyAudio on Windows, use the prebuilt wheel:
-> `pip install pipwin && pipwin install pyaudio`
 
 ### Installation
 
 ```bash
-git clone https://github.com/masteringmachines/soundvisualizer.git
-cd soundvisualizer/sound-visualizer-pro
+git clone https://github.com/masteringmachines/todoapp.git
+cd todoapp/daily-todo-app
 python -m venv venv
 source venv/bin/activate  # Windows: venv\Scripts\activate
 pip install -r requirements.txt
@@ -52,45 +46,46 @@ pip install -r requirements.txt
 
 ### Run
 
-**Live microphone mode:**
 ```bash
-python main.py --mode mic
+python main.py
 ```
 
-**File playback mode:**
+## 🖥️ Usage
+
 ```bash
-python main.py --mode file --input path/to/your/song.mp3
+# Add a new task
+python main.py add "Buy groceries"
+
+# List today's tasks
+python main.py list
+
+# Mark a task complete
+python main.py done 1
+
+# Remove a task
+python main.py remove 1
+
+# Show all tasks (including completed)
+python main.py list --all
 ```
 
-## 🎨 Visualization Modes
+## 💡 Example
 
-| Mode | Description |
-|------|-------------|
-| `waveform` | Classic oscilloscope-style amplitude over time |
-| `spectrum` | Bar chart of frequency components (FFT) |
-| `circular` | Radial spectrum — great for music visualization |
+```
+$ python main.py list
 
-Switch modes with the keyboard:
-- `W` — Waveform
-- `S` — Spectrum
-- `C` — Circular
-- `Q` — Quit
+📋 Today's Tasks
+─────────────────────────────
+[ ] 1. Buy groceries
+[ ] 2. Review pull requests
+[✓] 3. Morning run
 
-## ⚙️ Configuration
-
-Edit `config.py` to customize:
-
-```python
-SAMPLE_RATE = 44100
-CHUNK_SIZE = 1024
-BAR_COLOR = (0, 200, 255)
-BACKGROUND_COLOR = (10, 10, 20)
-SENSITIVITY = 1.5
+2 remaining / 1 completed
 ```
 
 ## 🤝 Contributing
 
-Ideas welcome: GPU-accelerated rendering, beat detection, color themes, or saving visualizations as video. Open an issue or PR!
+Got ideas for features like priority levels, categories, or reminders? Open a PR or issue!
 
 ## 📝 License
 
